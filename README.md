@@ -80,7 +80,20 @@ build/libs/throwing_disc-1.21.1-0.1.13.jar
 
 ---
 
+## 🤖 AI 利用に関する開示 / AI Disclosure
+
+本 Mod は、プログラムコードの実装・テクスチャ画像の作成・ドキュメント作成において **生成AI（AI支援）** を使用して制作されています。
+
+- **企画・管理・テクスチャ監修**: Ruby
+- **AI 支援 (AI-Assisted / AI-Generated)**: プログラムコードの実装、テクスチャ作成、ドキュメント生成
+
+This project was developed with the assistance of Generative AI for code implementation, texture assets, and documentation.
+- **Project Lead & Supervision**: Ruby
+- **AI-Assisted / AI-Generated**: Code implementation, texture creation, and documentation.
+
+---
+
 ## 📜 ライセンス / License
 
 本 Mod は **[MIT License](LICENSE)** の下で公開されています。  
-- Mod・テクスチャ制作: **Ruby**
+- 制作: **Ruby**（AI-Assisted）
