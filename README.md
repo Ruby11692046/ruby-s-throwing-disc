@@ -26,8 +26,8 @@
 
 | Minecraft バージョン | Mod ローダー | 対象ブランチ | 最新Modバージョン |
 | :--- | :--- | :--- | :--- |
-| **1.20.1** | Minecraft Forge (47.4.20+) | [`1.20.1`](../../tree/1.20.1) | v0.1.8 |
-| **1.21.1** | NeoForge (21.1.66+) | [`1.21.1`](../../tree/1.21.1) | v0.1.11 |
+| **1.20.1** | Minecraft Forge (47.4.20+) | [`1.20.1`](../../tree/1.20.1) | v0.1.9 |
+| **1.21.1** | NeoForge (21.1.66+) | [`1.21.1`](../../tree/1.21.1) | v0.1.12 |
 
 ※ jar ファイルは1つにまとめず、バージョンごとに別々に配布・ビルドされます。
 
@@ -86,7 +86,7 @@
 ```bash
 git checkout 1.20.1
 ./gradlew build
-# 成果物: build/libs/throwing_disc-1.20.1-0.1.8.jar
+# 成果物: build/libs/throwing_disc-1.20.1-0.1.9.jar
 ```
 
 ### 1.21.1 (NeoForge) のビルド
@@ -94,7 +94,7 @@ git checkout 1.20.1
 ```bash
 git checkout 1.21.1
 ./gradlew build
-# 成果物: build/libs/throwing_disc-1.21.1-0.1.11.jar
+# 成果物: build/libs/throwing_disc-1.21.1-0.1.12.jar
 ```
 
 ---
@@ -106,8 +106,8 @@ git checkout 1.21.1
 ```
 throwing_disc-[Minecraftバージョン]-[Modバージョン].jar
 ```
-- 例: `throwing_disc-1.20.1-0.1.8.jar`
-- 例: `throwing_disc-1.21.1-0.1.11.jar`
+- 例: `throwing_disc-1.20.1-0.1.9.jar`
+- 例: `throwing_disc-1.21.1-0.1.12.jar`
 
 ---
 
