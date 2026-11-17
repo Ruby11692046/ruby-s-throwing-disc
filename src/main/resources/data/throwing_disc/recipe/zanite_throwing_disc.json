@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "aether"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "aether:zanite_gemstone"
+    }
+  },
+  "result": {
+    "id": "throwing_disc:zanite_throwing_disc",
+    "count": 1
+  }
+}

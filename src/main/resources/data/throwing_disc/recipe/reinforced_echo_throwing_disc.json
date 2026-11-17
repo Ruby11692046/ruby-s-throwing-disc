@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "deeperdarker"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "deeperdarker:reinforced_echo_shard"
+    }
+  },
+  "result": {
+    "id": "throwing_disc:reinforced_echo_throwing_disc",
+    "count": 1
+  }
+}
