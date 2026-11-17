@@ -2,7 +2,7 @@
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-brightgreen)
 ![Forge](https://img.shields.io/badge/Forge-47.4.20+-orange)
-![Version](https://img.shields.io/badge/Version-0.1.9-blue)
+![Version](https://img.shields.io/badge/Version-0.1.10-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 2027年第1ドロップで実装予定の新武器**「投擲ディスク（Throwing Disc）」**の Minecraft 1.20.1（Forge）バックポートModです。
@@ -53,7 +53,7 @@
 ## 🛠️ 導入方法 / Installation
 
 1. Minecraft 1.20.1 および **Forge 47.4.20 以降** をインストールします。
-2. リリースページから `throwing_disc-1.20.1-0.1.9.jar` をダウンロードします。
+2. リリースページから `throwing_disc-1.20.1-0.1.10.jar` をダウンロードします。
 3. ダウンロードした jar ファイルを `.minecraft/mods` フォルダに配置します。
 
 ---
@@ -71,7 +71,7 @@
 
 ビルドが成功すると、以下の場所に jar ファイルが生成されます：
 ```
-build/libs/throwing_disc-1.20.1-0.1.9.jar
+build/libs/throwing_disc-1.20.1-0.1.10.jar
 ```
 
 ---
