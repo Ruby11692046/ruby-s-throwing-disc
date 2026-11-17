@@ -2,7 +2,7 @@
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-brightgreen)
 ![NeoForge](https://img.shields.io/badge/NeoForge-21.1.66+-blue)
-![Version](https://img.shields.io/badge/Version-0.1.11-blue)
+![Version](https://img.shields.io/badge/Version-0.1.12-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 2027年第1ドロップで実装予定の新武器**「投擲ディスク（Throwing Disc）」**の Minecraft 1.21.1（NeoForge）移植版Modです。
@@ -57,7 +57,7 @@
 ## 🛠️ 導入方法 / Installation
 
 1. Minecraft 1.21.1 および **NeoForge 21.1.66 以降** をインストールします。
-2. リリースページから `throwing_disc-1.21.1-0.1.11.jar` をダウンロードします。
+2. リリースページから `throwing_disc-1.21.1-0.1.12.jar` をダウンロードします。
 3. ダウンロードした jar ファイルを `.minecraft/mods` フォルダに配置します。
 
 ---
@@ -75,7 +75,7 @@
 
 ビルドが成功すると、以下の場所に jar ファイルが生成されます：
 ```
-build/libs/throwing_disc-1.21.1-0.1.11.jar
+build/libs/throwing_disc-1.21.1-0.1.12.jar
 ```
 
 ---
