@@ -1,0 +1,425 @@
+package com.ruby.throwingdisc.entity;
+
+import com.ruby.throwingdisc.item.DiscItem;
+import com.ruby.throwingdisc.item.DiscTier;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ExperienceOrb;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+/**
+ * The flying disc. Behaviour follows the announced vanilla design:
+ * straight flight with no gravity, pierces every entity in its path,
+ * ricochets off blocks (each bounce extends its range and speeds it up),
+ * then flies back to the thrower and is caught into the hand it left.
+ * The return leg passes through blocks, like a Loyalty trident.
+ */
+public class DiscProjectileEntity extends Projectile {
+    private static final EntityDataAccessor<ItemStack> DATA_ITEM =
+            SynchedEntityData.defineId(DiscProjectileEntity.class, EntityDataSerializers.ITEM_STACK);
+
+    public static final float BASE_SPEED = 1.6f;
+    private static final double BASE_RANGE = 26.0;
+    private static final double MAX_SPEED = BASE_SPEED * 2.0;
+    private static final double CATCH_DISTANCE = 1.3;
+
+    private boolean returning = false;
+    private int flightTicks = 0;
+    private boolean forcedReturn = false;
+    private double traveled = 0.0;
+    private double budget = 0.0;
+    private InteractionHand fromHand = InteractionHand.MAIN_HAND;
+    private final Set<UUID> hitThisPhase = new HashSet<>();
+
+    public DiscProjectileEntity(EntityType<? extends DiscProjectileEntity> type, Level level) {
+        super(type, level);
+        this.setNoGravity(true);
+    }
+
+    // ------------------------------------------------------------------ data
+
+    @Override
+    protected void defineSynchedData() {
+        this.entityData.define(DATA_ITEM, ItemStack.EMPTY);
+    }
+
+    /** ItemSupplier-style accessor used by the renderer. */
+    public ItemStack getItem() {
+        return this.entityData.get(DATA_ITEM);
+    }
+
+    public ItemStack getDiscStack() {
+        return getItem();
+    }
+
+    public void setDiscStack(ItemStack stack) {
+        this.entityData.set(DATA_ITEM, stack);
+        if (this.budget <= 0.0) {
+            this.budget = BASE_RANGE;
+        }
+    }
+
+    public void setFromHand(InteractionHand hand) {
+        this.fromHand = hand;
+    }
+
+    public DiscTier getTier() {
+        if (getItem().getItem() instanceof DiscItem disc) {
+            return disc.getTier();
+        }
+        return DiscTier.IRON;
+    }
+
+    @Override
+    public boolean fireImmune() {
+        return getTier().fireResistant();
+    }
+
+    // ------------------------------------------------------------------ tick
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.level().isClientSide) {
+            return;
+        }
+        Entity owner = getOwner();
+        if (owner == null || !owner.isAlive() || owner.level() != this.level()
+                || getItem().isEmpty()) {
+            dropAndDiscard();
+            return;
+        }
+        if (!this.returning) {
+            this.flightTicks++;
+            if (this.flightTicks >= 60) { // 3 seconds after the throw, at the latest
+                this.forcedReturn = true;
+                startReturn();
+            }
+        }
+        if (this.returning) {
+            tickReturning(owner);
+        } else {
+            tickOutbound();
+        }
+    }
+
+    private void tickOutbound() {
+        Vec3 pos = position();
+        Vec3 mov = getDeltaMovement();
+        Vec3 next = pos.add(mov);
+
+        EntityHitResult entityHit = ProjectileUtil.getEntityHitResult(
+                this.level(), this, pos, next,
+                getBoundingBox().expandTowards(mov).inflate(0.3), this::canHitEntity);
+        // Officially the disc ricochets off "hard surfaces" (solid blocks).
+        // COLLIDER clips against collision shapes, so the disc passes through
+        // grass, flowers and torches but bounces off any solid block.
+        BlockHitResult blockHit = this.level().clip(new ClipContext(
+                pos, next, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
+
+        boolean blockCloser = blockHit.getType() == HitResult.Type.BLOCK
+                && (entityHit == null
+                    || blockHit.getLocation().distanceToSqr(pos) < entityHit.getLocation().distanceToSqr(pos));
+
+        if (blockCloser) {
+            if (smashThrough(blockHit)) {
+                setPos(next.x, next.y, next.z);
+            } else {
+                ricochet(blockHit);
+            }
+        } else {
+            if (entityHit != null) {
+                onHitEntity(entityHit.getEntity());
+                if (this.isRemoved()) {
+                    return; // disc broke on this hit
+                }
+            }
+            setPos(next.x, next.y, next.z);
+        }
+
+        this.traveled += mov.length();
+        if (this.traveled >= this.budget) {
+            startReturn();
+        }
+    }
+
+    private void tickReturning(Entity owner) {
+        if (!(owner instanceof Player player)) {
+            dropAndDiscard();
+            return;
+        }
+        Vec3 target = new Vec3(player.getX(), player.getY() + 1.2, player.getZ());
+        Vec3 toTarget = target.subtract(position());
+        double distance = toTarget.length();
+        if (distance < CATCH_DISTANCE) {
+            catchDisc(player);
+            return;
+        }
+        Vec3 mov = toTarget.normalize().scale(
+                BASE_SPEED * getTier().speedFactor() * (this.forcedReturn ? 1.7 : 1.1));
+        setDeltaMovement(mov);
+
+        // The disc still cuts on the way home: outbound and return are
+        // separate phases, so an enemy can be hit once in each direction.
+        Vec3 pos = position();
+        Vec3 next = pos.add(mov);
+        EntityHitResult entityHit = ProjectileUtil.getEntityHitResult(
+                this.level(), this, pos, next,
+                getBoundingBox().expandTowards(mov).inflate(0.3), this::canHitEntity);
+        if (entityHit != null) {
+            onHitEntity(entityHit.getEntity());
+            if (this.isRemoved()) {
+                return;
+            }
+        }
+        setPos(next.x, next.y, next.z);
+    }
+
+    // ------------------------------------------------------------------ hits
+
+    @Override
+    protected boolean canHitEntity(Entity entity) {
+        if (entity == getOwner() || !entity.isAlive()) {
+            return false;
+        }
+        if (this.hitThisPhase.contains(entity.getUUID())) {
+            return false;
+        }
+        if (entity instanceof ItemEntity || entity instanceof DiscProjectileEntity) {
+            return false;
+        }
+        return entity.canBeHitByProjectile();
+    }
+
+    private void onHitEntity(Entity target) {
+        this.hitThisPhase.add(target.getUUID());
+        DiscTier tier = getTier();
+        float damage = tier.damage();
+        // Zanite grows stronger as the disc itself wears down (The Aether).
+        ItemStack stack = getDiscStack();
+        if (tier.scalesWithDamage() && stack.getMaxDamage() > 0) {
+            damage *= 1.0f + (float) stack.getDamageValue() / (float) stack.getMaxDamage();
+        }
+        if (target instanceof LivingEntity living) {
+            // Knightmetal cuts armored targets harder (Twilight Forest).
+            if (living.getArmorValue() > 0) {
+                damage += tier.bonusVsArmored();
+            }
+            // Silver bites the undead (Ice and Fire).
+            if (living.getMobType() == MobType.UNDEAD) {
+                damage *= 1.0f + tier.bonusVsUndead();
+            }
+            // Dragonbone and dragonsteel bite dragons (Ice and Fire).
+            if (isDragon(target)) {
+                damage *= 1.0f + tier.bonusVsDragon();
+            }
+            // The echo disc hums against sculk creatures, in the manner of
+            // Deeper and Darker's Sculk Smite.
+            if (isSculkMob(target)) {
+                damage += tier.bonusVsSculk();
+            }
+        }
+        DamageSource source = this.damageSources().thrown(this, getOwner());
+        if (target.hurt(source, damage)) {
+            if (target instanceof LivingEntity living) {
+                double knockback = 0.4 * tier.knockbackMultiplier();
+                living.knockback(knockback,
+                        Mth.sin(this.getYRot() * ((float) Math.PI / 180.0f)),
+                        -Mth.cos(this.getYRot() * ((float) Math.PI / 180.0f)));
+                if (tier.igniteSeconds() > 0) {
+                    living.setSecondsOnFire(tier.igniteSeconds());
+                }
+                if (tier.witherSeconds() > 0) {
+                    living.addEffect(new MobEffectInstance(
+                            MobEffects.WITHER, tier.witherSeconds() * 20, 0));
+                }
+                if (tier.slowSeconds() > 0) {
+                    living.addEffect(new MobEffectInstance(
+                            MobEffects.MOVEMENT_SLOWDOWN, tier.slowSeconds() * 20, 1));
+                }
+                // Gravitite launches its target skyward (The Aether).
+                if (tier.launchPower() > 0.0) {
+                    living.setDeltaMovement(living.getDeltaMovement().add(0.0, tier.launchPower(), 0.0));
+                    living.hurtMarked = true;
+                }
+                // A steeleaf kill pays out extra experience, after its sword's
+                // built-in Looting II (Twilight Forest).
+                if (tier.xpOnKill() > 0 && !living.isAlive()
+                        && this.level() instanceof ServerLevel serverLevel) {
+                    ExperienceOrb.award(serverLevel, living.position(), tier.xpOnKill());
+                }
+            }
+            this.level().playSound(null, this.blockPosition(), SoundEvents.TRIDENT_HIT,
+                    SoundSource.PLAYERS, 0.8f, 1.1f);
+            damageDisc();
+        }
+    }
+
+    private static boolean isDragon(Entity entity) {
+        return BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getPath().contains("dragon");
+    }
+
+    private static boolean isSculkMob(Entity entity) {
+        if (entity.getType() == EntityType.WARDEN || entity.getType() == EntityType.PHANTOM) {
+            return true;
+        }
+        return BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getNamespace().equals("deeperdarker");
+    }
+
+    /**
+     * Vanilla projectile interactions with the block that was hit, exactly as
+     * an arrow or trident would cause them: decorated pots shatter, chorus
+     * flowers drop, target blocks trigger, bells ring. Returns true when the
+     * block was smashed, in which case the disc flies on instead of bouncing.
+     */
+    private boolean smashThrough(BlockHitResult blockHit) {
+        BlockPos pos = blockHit.getBlockPos();
+        BlockState state = this.level().getBlockState(pos);
+        state.onProjectileHit(this.level(), state, blockHit, this);
+        if (this.level().getBlockState(pos).isAir()) {
+            return true;
+        }
+        // Decorated pots only learned to shatter from projectiles in vanilla
+        // 1.20.2; on versions whose pot does not react natively, smash it the
+        // same way here.
+        if (state.is(Blocks.DECORATED_POT) && this.mayInteract(this.level(), pos)) {
+            this.level().destroyBlock(pos, true, this);
+            return true;
+        }
+        return false;
+    }
+
+    private void ricochet(BlockHitResult blockHit) {
+        Vec3 mov = getDeltaMovement();
+        Direction direction = blockHit.getDirection();
+        Vec3 reflected = switch (direction.getAxis()) {
+            case X -> new Vec3(-mov.x, mov.y, mov.z);
+            case Y -> new Vec3(mov.x, -mov.y, mov.z);
+            case Z -> new Vec3(mov.x, mov.y, -mov.z);
+        };
+        double newLength = Math.min(reflected.length() * 1.15, MAX_SPEED);
+        reflected = reflected.normalize().scale(newLength);
+        setDeltaMovement(reflected);
+        Vec3 at = blockHit.getLocation().add(reflected.normalize().scale(0.06));
+        setPos(at.x, at.y, at.z);
+        // A bounce is what lets the disc fly farther than its base range,
+        // and it may cut enemies it already passed on the new leg.
+        this.budget += getTier().ricochetBonus();
+        this.hitThisPhase.clear();
+        this.level().playSound(null, blockHit.getBlockPos(), SoundEvents.TRIDENT_HIT_GROUND,
+                SoundSource.PLAYERS, 0.7f, 1.2f);
+    }
+
+    /** Lose 1 durability per entity damaged; breaking mid-flight ends the flight. */
+    private void damageDisc() {
+        ItemStack stack = getDiscStack();
+        if (stack.isEmpty()) {
+            return;
+        }
+        if (stack.hurt(1, this.random, null)) {
+            this.level().playSound(null, this.blockPosition(), SoundEvents.ITEM_BREAK,
+                    SoundSource.PLAYERS, 0.8f, 1.0f);
+            discard();
+        } else {
+            setDiscStack(stack);
+        }
+    }
+
+    // ------------------------------------------------------------------ return
+
+    private void startReturn() {
+        this.returning = true;
+        this.hitThisPhase.clear();
+        this.level().playSound(null, this.blockPosition(), SoundEvents.TRIDENT_RETURN,
+                SoundSource.PLAYERS, 0.6f, 1.2f);
+    }
+
+    private void catchDisc(Player player) {
+        ItemStack stack = getDiscStack();
+        if (!stack.isEmpty()) {
+            if (player.getItemInHand(this.fromHand).isEmpty()) {
+                player.setItemInHand(this.fromHand, stack);
+            } else if (!player.getInventory().add(stack)) {
+                player.drop(stack, false);
+            }
+            this.level().playSound(null, player.blockPosition(), SoundEvents.ITEM_PICKUP,
+                    SoundSource.PLAYERS, 0.6f, 1.2f);
+        }
+        discard();
+    }
+
+    private void dropAndDiscard() {
+        ItemStack stack = getDiscStack();
+        if (!stack.isEmpty() && !this.level().isClientSide) {
+            ItemEntity drop = new ItemEntity(this.level(), getX(), getY(), getZ(), stack);
+            drop.setDefaultPickUpDelay();
+            this.level().addFreshEntity(drop);
+        }
+        discard();
+    }
+
+    // ------------------------------------------------------------------ nbt
+
+    @Override
+    protected void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        ItemStack stack = getDiscStack();
+        if (!stack.isEmpty()) {
+            tag.put("DiscItem", stack.save(new CompoundTag()));
+        }
+        tag.putBoolean("Returning", this.returning);
+        tag.putInt("FlightTicks", this.flightTicks);
+        tag.putBoolean("ForcedReturn", this.forcedReturn);
+        tag.putDouble("Traveled", this.traveled);
+        tag.putDouble("Budget", this.budget);
+        tag.putByte("FromHand", (byte) (this.fromHand == InteractionHand.OFF_HAND ? 1 : 0));
+    }
+
+    @Override
+    protected void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        if (tag.contains("DiscItem")) {
+            setDiscStack(ItemStack.of(tag.getCompound("DiscItem")));
+        }
+        this.returning = tag.getBoolean("Returning");
+        this.flightTicks = tag.getInt("FlightTicks");
+        this.forcedReturn = tag.getBoolean("ForcedReturn");
+        this.traveled = tag.getDouble("Traveled");
+        this.budget = tag.getDouble("Budget");
+        this.fromHand = tag.getByte("FromHand") == 1
+                ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
+    }
+}

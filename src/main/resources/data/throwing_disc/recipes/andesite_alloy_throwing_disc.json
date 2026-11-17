@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "create:andesite_alloy"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:andesite_alloy_throwing_disc",
+    "count": 1
+  }
+}

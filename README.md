@@ -1,11 +1,11 @@
-# Ruby's Throwing Disc
+# Ruby's Throwing Disc (1.20.1 Forge)
 
-![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1%20%7C%201.21.1-brightgreen)
-![Forge](https://img.shields.io/badge/Forge-1.20.1-orange)
-![NeoForge](https://img.shields.io/badge/NeoForge-1.21.1-blue)
+![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-brightgreen)
+![Forge](https://img.shields.io/badge/Forge-47.4.20+-orange)
+![Version](https://img.shields.io/badge/Version-0.1.8-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-2027年第1ドロップで実装予定の新武器**「投擲ディスク（Throwing Disc）」**を、Minecraft 1.20.1（Forge）および 1.21.1（NeoForge）で先行して遊べるようにする Mod です。
+2027年第1ドロップで実装予定の新武器**「投擲ディスク（Throwing Disc）」**の Minecraft 1.20.1（Forge）バックポートModです。
 
 ---
 
@@ -16,32 +16,17 @@
 - **自動帰還**: 投げた手元へ自動で戻ってきます（帰り道でも敵に命中します）。3秒経過すると強制的に戻ります。
 - **両手対応＆ノーコスト**: メインハンド・オフハンドどちらからでも投げられ、チャージ・クールダウン・弾薬は不要です。
 - **ギミック連動**: 飾り壺の破壊やコーラスフラワーのアイテム化など、バニラの飛び道具挙動を再現しています。
-- **多数の他Mod連携（ソフト依存）**: 各種有名Modの素材を使ったディスクを追加。相手Modが導入されていない環境でも問題なく単独動作します。
+- **全32種のディスク**: バニラ5種＋各種連携Mod素材27種。
+- **ソフト依存（Soft Dependency）**: 連携先Modが導入されていない環境でも問題なく単独で動作します（未導入Modのレシピのみ無効化）。
 
 ---
 
-## 🎯 対応バージョンとModローダー
-
-本リポジトリは、Minecraft のバージョンごとにブランチを分けて管理しています。
-
-| Minecraft バージョン | Mod ローダー | 対象ブランチ | 最新Modバージョン |
-| :--- | :--- | :--- | :--- |
-| **1.20.1** | Minecraft Forge (47.4.20+) | [`1.20.1`](../../tree/1.20.1) | v0.1.8 |
-| **1.21.1** | NeoForge (21.1.66+) | [`1.21.1`](../../tree/1.21.1) | v0.1.11 |
-
-※ jar ファイルは1つにまとめず、バージョンごとに別々に配布・ビルドされます。
-
----
-
-## 📦 追加ディスク一覧と対応素材Mod
-
-ディスクは **1.20.1版で全32種**、**1.21.1版で全35種** 登場します。  
-すべての連携は**ソフト依存（Soft Dependency）**となっており、対象Modが未導入の場合はそのディスクのレシピのみが無効化されます。
+## 📦 収録ディスク（全32種）
 
 ### バニラ素材（5種）
-- 銅、鉄、金、ダイヤモンド、ネザライト
+- 銅、鉄、金、ダイヤモンド、ネザライト（鍛冶台で強化）
 
-### 外部Mod連携素材
+### 外部Mod連携素材（27種）
 - **Twilight Forest (黄昏の森)**: アイアンウッド、スティールリーフ、ナイトメタル、ファイアリー
 - **The Aether**: アンブロシウム、ザナイト、グラヴィタイト
 - **Create**: 安山合金、亜鉛、真鍮
@@ -49,9 +34,8 @@
 - **Deeper and Darker**: 強化残響
 - **L_Ender's Cataclysm**: ブラック鋼、古代金属、エンダライト、イグニティウム、カーシウム、ウィザライト
 - **Ice and Fire**: 銀、龍骨、幻影、火龍鋼、氷龍鋼、雷龍鋼
-- **Thaumaturge** *(1.21.1 のみ)*: 錬金真鍮、ソーミウム、虚無金属
 
-### 各素材の特殊武器特性
+### 特殊武器特性
 - **アイアンウッド**: ノックバック強化（ノックバックI内蔵の再現）
 - **スティールリーフ**: キル時に経験値ボーナス（ドロップ増加IIの翻案）
 - **ナイトメタル**: 防具を着た敵に対してダメージ+2（装甲特効）
@@ -63,51 +47,32 @@
 - **強化残響**: スカルク系の敵に対してダメージ+5（Sculk Smite の翻案）
 - **ウィザライト**: 命中時にウィザー効果を付与
 - **氷龍鋼**: 命中時に移動速度低下（鈍化）を付与
-- **虚無金属**: インベントリに所持している間に少しずつ耐久が自己修復
-- **ソーミウム**: エンチャント適性が非常に高い
 
 ---
 
 ## 🛠️ 導入方法 / Installation
 
-1. ご使用の環境に合わせた Mod ローダー（Forge または NeoForge）を導入します。
-2. リリースページ（CurseForge / Modrinth / GitHub Releases）から、プレイ環境と一致するバージョンの jar ファイルをダウンロードします。
-   - 例: `throwing_disc-1.20.1-0.1.8.jar` または `throwing_disc-1.21.1-0.1.11.jar`
-3. ダウンロードした jar ファイルを Minecraft の `.minecraft/mods` フォルダに配置してゲームを起動します。
+1. Minecraft 1.20.1 および **Forge 47.4.20 以降** をインストールします。
+2. リリースページから `throwing_disc-1.20.1-0.1.8.jar` をダウンロードします。
+3. ダウンロードした jar ファイルを `.minecraft/mods` フォルダに配置します。
 
 ---
 
 ## 💻 ビルド方法 / Building from Source
 
-ソースコードからビルドする場合は、各バージョンに対応するブランチをチェックアウトして実行してください。
+### 前提環境
+- **JDK 17**（Java 17）
 
-### 1.20.1 (Forge) のビルド
-- **動作要件**: JDK 17
+### ビルド手順
 ```bash
-git checkout 1.20.1
+# プロジェクトルートで実行
 ./gradlew build
-# 成果物: build/libs/throwing_disc-1.20.1-0.1.8.jar
 ```
 
-### 1.21.1 (NeoForge) のビルド
-- **動作要件**: JDK 21
-```bash
-git checkout 1.21.1
-./gradlew build
-# 成果物: build/libs/throwing_disc-1.21.1-0.1.11.jar
+ビルドが成功すると、以下の場所に jar ファイルが生成されます：
 ```
-
----
-
-## 🏷️ jar ファイル命名規則
-
-配布用 jar ファイルは、Mod ID・Minecraft バージョン・Mod バージョンが判別できる以下の形式で統一されています。
-
+build/libs/throwing_disc-1.20.1-0.1.8.jar
 ```
-throwing_disc-[Minecraftバージョン]-[Modバージョン].jar
-```
-- 例: `throwing_disc-1.20.1-0.1.8.jar`
-- 例: `throwing_disc-1.21.1-0.1.11.jar`
 
 ---
 

@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "mekanism:ingot_refined_glowstone"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:refined_glowstone_throwing_disc",
+    "count": 1
+  }
+}
