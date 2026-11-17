@@ -41,7 +41,7 @@ Every integration is a **soft dependency**: without the other mod installed, onl
 - **Void Metal** — slowly repairs itself while carried, as in Thaumcraft
 - **Thaumium** — very high enchantability
 
-**Credits:** Mod and textures by Ruby.
+**Credits & AI Disclosure:** Mod, textures, and documentation created by Ruby with Generative AI assistance.
 **License:** MIT License.
 
 ---
@@ -83,5 +83,5 @@ Every integration is a **soft dependency**: without the other mod installed, onl
 - **虚無金属**：所持している間に少しずつ自己修復（Thaumcraft 由来）
 - **ソーミウム**：エンチャント適性が非常に高い
 
-**クレジット：** Mod・テクスチャ制作 Ruby
+**クレジット・AI利用開示：** Mod・テクスチャ・ドキュメント制作 Ruby（生成AI支援により制作）  
 **ライセンス：** MIT License
