@@ -3,7 +3,7 @@ loaderVersion="[2,)"
 license="MIT"
 [[mods]]
 modId="throwing_disc"
-version="0.1.12"
+version="0.1.13"
 displayName="Ruby's Throwing Disc"
 authors="Ruby"
 description='''
