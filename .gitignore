@@ -24,7 +24,7 @@ run/
 !**/gradle/wrapper/gradle-wrapper.jar
 
 # Other workspaces & backups
-hextale_port/
+hextale*/
 retro_gen/
 those_who_inherit_thaum/
 muse_mods_backup/
