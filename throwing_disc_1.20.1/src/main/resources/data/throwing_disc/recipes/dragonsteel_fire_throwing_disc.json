@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "iceandfire:dragonsteel_fire_ingot"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:dragonsteel_fire_throwing_disc",
+    "count": 1
+  }
+}

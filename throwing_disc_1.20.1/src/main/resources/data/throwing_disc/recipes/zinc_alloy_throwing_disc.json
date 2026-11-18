@@ -1,0 +1,26 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Z ",
+    "ZIZ",
+    " Z "
+  ],
+  "key": {
+    "Z": {
+      "item": "create:zinc_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:zinc_alloy_throwing_disc",
+    "count": 1
+  }
+}

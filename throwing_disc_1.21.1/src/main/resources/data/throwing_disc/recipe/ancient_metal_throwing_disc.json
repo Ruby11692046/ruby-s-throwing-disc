@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cataclysm"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "cataclysm:ancient_metal_ingot"
+    }
+  },
+  "result": {
+    "id": "throwing_disc:ancient_metal_throwing_disc",
+    "count": 1
+  }
+}

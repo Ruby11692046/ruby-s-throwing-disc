@@ -1,0 +1,22 @@
+{
+  "description": {
+    "translate": "enchantment.throwing_disc.delicate"
+  },
+  "supported_items": "#throwing_disc:throwing_discs",
+  "primary_items": "#throwing_disc:throwing_discs",
+  "weight": 5,
+  "max_level": 1,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 0
+  },
+  "max_cost": {
+    "base": 65,
+    "per_level_above_first": 0
+  },
+  "anvil_cost": 4,
+  "slots": [
+    "mainhand",
+    "offhand"
+  ]
+}

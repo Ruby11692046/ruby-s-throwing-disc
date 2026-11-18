@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "mekanism:ingot_osmium"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:osmium_throwing_disc",
+    "count": 1
+  }
+}
