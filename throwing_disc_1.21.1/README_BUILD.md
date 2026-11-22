@@ -1,9 +1,22 @@
-# Ruby's Throwing Disc（1.21.1 NeoForge）v0.1.28 — ビルド手順
+# Ruby's Throwing Disc（1.21.1 NeoForge）v0.1.29 — ビルド手順
 
 ## これは何
 1.20.1 Forge 版と同内容の **1.21.1 NeoForge 移植版**（初版）。
-ディスク全19種・挙動（貫通／跳ね返り／自動帰還／投げて3秒で強制帰還）・連携14種は共通。
+ディスク全62種（バニラ5＋連携57）。挙動（貫通／跳ね返り／自動帰還／投げて3秒で強制帰還）は 1.20.1 版と共通。
 連携は全部ソフト依存で、相手 Mod が無い環境ではそのレシピだけが無効になる。
+
+## v0.1.29 での変更
+- **連携Modを大量追加**（合計62種に）：Caverns and Chasms 2 / Oreganized 2 /
+  Deep Aether 2 / Just Dire Things 4 / Undergarden 4 / Unusual End 1 /
+  Eternal Starlight 7 / Malum 2（ソウルステインド鋼＋マリグナントピューター）/
+  Occultism 1 / Astral Sorcery 1（スターメタル）
+- 特性の再現：銀（C&C）とソウルステインド鋼はダメージの半分が魔法ダメージ化／
+  エレクトラムは飛行速度で威力上昇／スカイジェイドは無傷なほど強い（ザナイトの逆）／
+  ストラタスはグラビタイトより強く打ち上げ／パーレセントは射程+8／
+  ブレイズゴールドは溶岩の中で所持修復／ネクロミウム・フロストスチール・
+  グラサイトは鈍化付与
+- テスト観点の追加：Astral Sorcery のスターメタル、Malum のマリグナント
+  ピューターが作れるか
 
 ## ビルド方法（Mac）
 前提：**JDK 21**（IntelliJ のログで見た BellSoft の Java 21 が使えるはず）
@@ -14,7 +27,7 @@
    - Gradle の JVM が 17 のままだと toolchain で 21 を探しに行く。
      見つからないと言われたら、IntelliJ の Settings → Build Tools → Gradle で
      Gradle JVM を 21 に設定してから実行
-3. `build/libs/throwing_disc-1.21.1-0.1.28.jar` ができたら成功
+3. `build/libs/throwing_disc-1.21.1-0.1.29.jar` ができたら成功
    （BUILD SUCCESSFUL の表示だけで判断せず、jar の実在を確認すること）
 4. jar を 1.21.1 NeoForge 環境の mods フォルダへ
 
@@ -27,7 +40,7 @@
 
 ## v0.1.27 での変更
 - **飛翔速度をさらに調整**：基本速度 1.4 → 1.0 ブロック/tick
-- **ビルド後の jar 名を変更**：throwing_disc-1.21.1-0.1.28.jar 形式にした
+- **ビルド後の jar 名を変更**：throwing_disc-1.21.1-0.1.29.jar 形式にした
   （build.gradle の archivesName に Minecraft バージョンを含めた）
 
 ## v0.1.26 での変更

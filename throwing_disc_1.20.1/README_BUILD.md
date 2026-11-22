@@ -1,11 +1,16 @@
-# Ruby's Throwing Disc（1.20.1 Forge）v0.1.25 — ビルド手順
+# Ruby's Throwing Disc（1.20.1 Forge）v0.1.26 — ビルド手順
 
 ## これは何
 2027年第1ドロップで実装予定の新武器「Throwing Disc」の 1.20.1 バックポートMod。
-- ディスク全32種：バニラ5種（銅・鉄・金・ダイヤ・ネザライト）＋連携27種
-  （Twilight Forest 4 / Aether 3 / Create 3 / Mekanism 4 /
-   Deeper and Darker 1 / Cataclysm 6 / Ice and Fire 6）
-- 連携は全部ソフト依存。相手Modが入っていない環境では、そのレシピだけが無効になる
+- ディスク全67種：バニラ5種（銅・鉄・金・ダイヤ・ネザライト）＋連携62種
+  （Twilight Forest 4 / Aether 3 / Create 3 / Mekanism 4 / Cataclysm 6 /
+   Ice and Fire 6 / Enderite Mod 1 / Caverns and Chasms 2 / Oreganized 2 /
+   Deep Aether 2 / Just Dire Things 4 / Undergarden 4 / Unusual End 1 /
+   Eternal Starlight 7 / Malum 1 / Occultism 1 / Behemoths 2 /
+   Aether Redux 1 / Lost Content 1 / Mana and Artifice 1 / Blaze Gear 1 / Blue Skies 5）
+- 連携は全部ソフト依存。相手Modが入っていない環境では、そのディスク自体が存在しない
+- フェニックスのディスクだけはクラフト不可：Lost Content のプラチナダンジョンの
+  お宝チェストから、本家のフェニックスツールと同じ枠で出る
 - 挙動：投げると直進 → 敵を貫通 → 壁で跳ね返ると射程が伸びて加速 → 自動で手元に戻る
 
 ## ビルド方法（Mac）
@@ -15,7 +20,7 @@
    - ⚠️ 前回の事故の教訓：パッチ式にファイルを上書きコピーしないこと。
      更新のときはフォルダごと入れ替える（Gradle の JVM 17 設定だけ、必要なら再設定）
 2. ターミナルでフォルダに移動して `./gradlew build`
-3. `build/libs/throwing_disc-1.20.1-0.1.25.jar` ができたら成功
+3. `build/libs/throwing_disc-1.20.1-0.1.26.jar` ができたら成功
    （BUILD SUCCESSFUL の表示だけで判断せず、jar が実在するか確認すること）
 4. jar を mods フォルダへ。古い版を入れたことがある場合は古い jar を消してから
 
@@ -27,6 +32,27 @@
 - 連携レシピ：Create が入った環境なら真鍮などのディスクが作れるか。
   入っていない Mod の素材ディスクは作れないのが正常
 - インベントリが満杯の状態でキャッチすると足元に落ちるのが仕様
+
+## v0.1.26 での変更
+- **連携Modを大量追加**（合計67種に）：Caverns and Chasms 2 / Oreganized 2 /
+  Deep Aether 2 / Just Dire Things 4 / Undergarden 4 / Unusual End 1 /
+  Eternal Starlight 7 / Malum 1 / Occultism 1 / Behemoths 2 / Aether Redux 1 /
+  Mana and Artifice 1 / Blaze Gear 1 / Blue Skies 5
+- **フェニックスのディスク**（Lost Content）：クラフト不可。プラチナダンジョンの
+  お宝チェストの「フェニックスツール」枠から出る。燃えている相手に+20%
+- **強化残響のディスクを削除**：Deeper and Darker の 1.20.1 版に強化残響の破片が
+  無いため（1.21.1 版には残っている）
+- 特性の再現：銀（C&C）とソウルステインド鋼はダメージの半分が魔法ダメージ化／
+  エレクトラムは飛行速度で威力上昇／スカイジェイドは無傷なほど強い（ザナイトの逆）／
+  ストラタスはグラビタイトより強く打ち上げ／パーレセントは射程+8／
+  ブレイズゴールドは溶岩の中で所持修復／ネクロミウム・フロストスチール・
+  グラサイトは鈍化付与
+
+## テスト観点の追加（v0.1.26）
+- 連携Mod入りの環境で、新しいディスクが作れるか（例：Undergarden の4種、
+  Eternal Starlight の7種、Blue Skies の5種）
+- Lost Content 入りなら、プラチナダンジョンのお宝チェストからフェニックスの
+  ディスクが出ることがある（クラフトできないのが仕様）
 
 ## v0.1.25 での変更
 - **回転の中心を修正**：レンダラーの表示コンテキストを GROUND → NONE に変更。GROUND の表示

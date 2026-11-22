@@ -1,0 +1,22 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "behemoths"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "behemoths:mortyx_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "throwing_disc:magnalyth_throwing_disc"
+  },
+  "addition": {
+    "item": "behemoths:mortyx_ingot"
+  },
+  "result": {
+    "item": "throwing_disc:mortyx_throwing_disc",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "malum"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "malum:soul_stained_steel_ingot"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:soulstained_steel_throwing_disc",
+    "count": 1
+  }
+}

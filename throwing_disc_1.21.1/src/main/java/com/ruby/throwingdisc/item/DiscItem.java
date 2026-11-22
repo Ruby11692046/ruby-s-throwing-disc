@@ -37,9 +37,10 @@ public class DiscItem extends Item {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
         super.inventoryTick(stack, level, entity, slotId, isSelected);
-        // Void metal slowly repairs itself while carried (1 point per 2 s).
-        if (tier.selfRepairs() && !level.isClientSide && stack.isDamaged()
-                && level.getGameTime() % 40 == 0) {
+        // Void metal slowly repairs itself while carried (1 point per 2 s);
+        // blazegold does the same, but only while its carrier is in lava.
+        if (!level.isClientSide && stack.isDamaged() && level.getGameTime() % 40 == 0
+                && (tier.selfRepairs() || (tier.lavaRepairs() && entity.isInLava()))) {
             stack.setDamageValue(stack.getDamageValue() - 1);
         }
     }

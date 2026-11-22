@@ -116,7 +116,7 @@ public class DiscProjectileEntity extends Projectile {
                 ModEnchantments.DELICATE.get(), stack) > 0;
         this.maxFlightTicks = 60 + 40 * lingering;
         if (this.budget <= 0.0) {
-            this.budget = BASE_RANGE + 13.0 * lingering;
+            this.budget = BASE_RANGE + 13.0 * lingering + getTier().rangeBonus();
         }
     }
 
@@ -321,6 +321,16 @@ public class DiscProjectileEntity extends Projectile {
         if (tier.scalesWithDamage() && stack.getMaxDamage() > 0) {
             damage *= 1.0f + (float) stack.getDamageValue() / (float) stack.getMaxDamage();
         }
+        // Skyjade is the inverse: strongest pristine, weaker as it wears (Deep Aether).
+        if (tier.scalesWithPristine() && stack.getMaxDamage() > 0) {
+            damage *= 1.0f - 0.55f * ((float) stack.getDamageValue() / (float) stack.getMaxDamage());
+        }
+        // Electrum deals kinetic damage: the faster the disc flies, the
+        // harder it hits, up to +50% (Oreganized).
+        if (tier.kineticDamage()) {
+            double speed = this.getDeltaMovement().length();
+            damage *= 1.0f + (float) Math.min(0.5, Math.max(0.0, speed - 1.0) * 0.5);
+        }
         if (target instanceof LivingEntity living) {
             // Knightmetal cuts armored targets harder (Twilight Forest).
             if (living.getArmorValue() > 0) {
@@ -339,9 +349,36 @@ public class DiscProjectileEntity extends Projectile {
             if (isSculkMob(target)) {
                 damage += tier.bonusVsSculk();
             }
+            // Phoenix weapons hit already-burning foes harder (Lost Content).
+            if (living.isOnFire()) {
+                damage *= 1.0f + tier.bonusVsBurning();
+            }
+            // Forgotten metal bites the Undergarden's own creatures, and
+            // utherium bites its Rotspawn (The Undergarden).
+            if (isUndergardenMob(target) && living.getMaxHealth() < 200.0f) {
+                damage *= 1.0f + tier.bonusVsUndergarden();
+            }
+            if (isRotspawn(target)) {
+                damage *= 1.0f + tier.bonusVsRotspawn();
+            }
+            // Magnalyth and Mortyx bite the colossal Behemoths.
+            if (isBehemothMob(target)) {
+                damage *= 1.0f + tier.bonusVsBehemoth();
+            }
         }
         DamageSource source = this.damageSources().thrown(this, getOwner());
+        // Caverns and Chasms silver and Malum's soulstained steel convert
+        // part of their damage to magic damage, which ignores armour.
+        float magicPart = 0.0f;
+        if (target instanceof LivingEntity) {
+            magicPart = damage * tier.magicSplit();
+            damage -= magicPart;
+        }
         if (target.hurt(source, damage)) {
+            if (magicPart > 0.0f && target instanceof LivingEntity magicTarget) {
+                magicTarget.invulnerableTime = 0;
+                magicTarget.hurt(this.damageSources().magic(), magicPart);
+            }
             if (target instanceof LivingEntity living) {
                 double knockback = 0.4 * tier.knockbackMultiplier();
                 living.knockback(knockback,
@@ -374,6 +411,19 @@ public class DiscProjectileEntity extends Projectile {
                     SoundSource.PLAYERS, 0.8f, 1.1f);
             damageDisc();
         }
+    }
+
+    private static boolean isUndergardenMob(Entity entity) {
+        return BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getNamespace().equals("undergarden");
+    }
+
+    private static boolean isRotspawn(Entity entity) {
+        var key = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
+        return key.getNamespace().equals("undergarden") && key.getPath().contains("rot");
+    }
+
+    private static boolean isBehemothMob(Entity entity) {
+        return BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType()).getNamespace().equals("behemoths");
     }
 
     private static boolean isDragon(Entity entity) {

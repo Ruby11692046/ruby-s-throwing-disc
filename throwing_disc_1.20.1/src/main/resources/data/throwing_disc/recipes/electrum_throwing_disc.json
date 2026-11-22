@@ -1,0 +1,22 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "oreganized"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "oreganized:electrum_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "throwing_disc:diamond_throwing_disc"
+  },
+  "addition": {
+    "item": "oreganized:electrum_ingot"
+  },
+  "result": {
+    "item": "throwing_disc:electrum_throwing_disc",
+    "count": 1
+  }
+}

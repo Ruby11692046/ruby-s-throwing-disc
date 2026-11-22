@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mna"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "mna:vinteum_ingot"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:vinteum_throwing_disc",
+    "count": 1
+  }
+}

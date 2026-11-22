@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "blazegear"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "blazegear:brimsteel_ingot"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:brimsteel_throwing_disc",
+    "count": 1
+  }
+}

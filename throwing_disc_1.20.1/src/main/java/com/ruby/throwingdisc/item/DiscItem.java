@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,6 +31,17 @@ public class DiscItem extends Item {
             props = props.fireResistant();
         }
         return props;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        super.inventoryTick(stack, level, entity, slotId, isSelected);
+        // Blazegold repairs itself in lava while carried (Just Dire Things):
+        // 1 point per 2 s, mirroring the void metal disc.
+        if (tier.lavaRepairs() && !level.isClientSide && stack.isDamaged()
+                && entity.isInLava() && level.getGameTime() % 40 == 0) {
+            stack.setDamageValue(stack.getDamageValue() - 1);
+        }
     }
 
     public DiscTier getTier() {

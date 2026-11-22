@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "throwing_disc:item/malignant_pewter_throwing_disc"
+  }
+}

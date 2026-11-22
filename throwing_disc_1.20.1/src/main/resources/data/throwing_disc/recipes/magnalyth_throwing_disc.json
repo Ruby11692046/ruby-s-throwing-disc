@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "behemoths"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "behemoths:magnalyth_ingot"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:magnalyth_throwing_disc",
+    "count": 1
+  }
+}

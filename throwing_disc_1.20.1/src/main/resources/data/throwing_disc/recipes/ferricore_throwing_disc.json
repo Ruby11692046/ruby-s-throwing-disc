@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "justdirethings"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "justdirethings:ferricore_ingot"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:ferricore_throwing_disc",
+    "count": 1
+  }
+}

@@ -54,7 +54,44 @@ public enum DiscTier {
     PHANTASMAL        ("phantasmal_throwing_disc",         9.0f,  900, 14, 1.20f, 0.9, 0,  10.0, false),
     DRAGONSTEEL_FIRE  ("dragonsteel_fire_throwing_disc",  11.0f, 2200, 10, 1.00f, 1.1, 3,  10.0, true),
     DRAGONSTEEL_ICE   ("dragonsteel_ice_throwing_disc",   11.0f, 2200, 10, 1.00f, 1.1, 0,  10.0, false),
-    DRAGONSTEEL_LIGHTNING ("dragonsteel_lightning_throwing_disc", 11.0f, 2200, 10, 1.15f, 1.1, 0, 10.0, false);
+    DRAGONSTEEL_LIGHTNING ("dragonsteel_lightning_throwing_disc", 11.0f, 2200, 10, 1.15f, 1.1, 0, 10.0, false),
+    // Caverns and Chasms
+    CAC_SILVER        ("caverns_and_chasms_silver_throwing_disc", 6.5f, 300, 14, 1.00f, 1.0, 0, 10.0, false),
+    NECROMIUM         ("necromium_throwing_disc",          9.5f, 1500, 12, 1.00f, 1.0, 0,  10.0, false),
+    // Oreganized
+    ELECTRUM          ("electrum_throwing_disc",           8.0f,  800, 18, 1.05f, 1.0, 0,  10.0, false),
+    OREGANIZED_SILVER ("oreganized_silver_throwing_disc",  6.5f,  300, 14, 1.00f, 1.0, 0,  10.0, false),
+    // Deep Aether
+    SKYJADE           ("skyjade_throwing_disc",            9.0f,  700, 12, 1.00f, 1.0, 0,  10.0, false),
+    STRATUS           ("stratus_throwing_disc",           10.5f, 2200, 14, 1.00f, 0.6, 0,  10.0, false),
+    // Just Dire Things
+    FERRICORE         ("ferricore_throwing_disc",          6.5f,  500, 15, 1.00f, 1.0, 0,  10.0, false),
+    BLAZEGOLD         ("blazegold_throwing_disc",          7.5f, 1440, 22, 1.00f, 1.0, 0,  10.0, true),
+    CELESTIGEM        ("celestigem_throwing_disc",         8.5f, 1561, 18, 1.00f, 1.0, 0,  10.0, false),
+    ECLIPSE_ALLOY     ("eclipse_alloy_throwing_disc",     10.0f, 2561, 25, 1.00f, 1.0, 0,  10.0, true),
+    // The Undergarden
+    CLOGGRUM          ("cloggrum_throwing_disc",           7.0f,  550, 12, 1.00f, 1.0, 0,  10.0, false),
+    FORGOTTEN         ("forgotten_throwing_disc",          9.0f, 1500, 14, 1.00f, 1.0, 0,  10.0, false),
+    FROSTSTEEL        ("froststeel_throwing_disc",         8.5f, 1100, 12, 1.00f, 1.0, 0,  10.0, false),
+    UTHERIUM          ("utherium_throwing_disc",           9.0f, 1300, 12, 1.00f, 1.0, 0,  10.0, false),
+    // Unusual End
+    PEARLESCENT       ("pearlescent_throwing_disc",        9.0f, 1024, 16, 1.00f, 1.0, 0,  10.0, false),
+    // Eternal Starlight
+    DEEPSILVER        ("deepsilver_throwing_disc",         7.0f,  450, 14, 1.00f, 1.0, 0,  10.0, false),
+    THERMAL_SPRINGSTONE ("thermal_springstone_throwing_disc", 8.0f, 900, 12, 1.00f, 1.0, 2, 10.0, false),
+    GLACITE           ("glacite_throwing_disc",            8.5f, 1000, 12, 1.00f, 1.0, 0,  10.0, false),
+    STARLIT_DIAMOND   ("starlit_diamond_throwing_disc",    9.0f, 1400, 16, 1.00f, 1.0, 0,  10.0, false),
+    AMARAMBER         ("amaramber_throwing_disc",          8.0f,  850, 10, 1.00f, 1.0, 0,  10.0, false),
+    MALARITE          ("malarite_throwing_disc",           9.5f, 1600, 14, 1.00f, 1.0, 0,  10.0, false),
+    UNREALIUM         ("unrealium_throwing_disc",         10.0f, 2000, 12, 1.00f, 1.0, 0,  10.0, false),
+    // Malum
+    SOULSTAINED_STEEL ("soulstained_steel_throwing_disc",  8.5f, 1000, 16, 1.00f, 1.0, 0,  10.0, false),
+    // Occultism
+    IESNIUM           ("iesnium_throwing_disc",            7.5f,  800, 10, 1.00f, 1.0, 0,  10.0, false),
+    // Malum (1.21.1 line only)
+    MALIGNANT_PEWTER  ("malignant_pewter_throwing_disc",  10.5f, 2200, 10, 1.00f, 1.1, 0,  10.0, false),
+    // Astral Sorcery
+    STARMETAL         ("starmetal_throwing_disc",          9.0f, 1500, 20, 1.00f, 1.0, 0,  10.0, false),;
 
     private final String registryName;
     private final float damage;
@@ -96,6 +133,17 @@ public enum DiscTier {
             case BLACK_STEEL, ANCIENT_METAL, ENDERITE, IGNITIUM, CURSIUM, WITHERITE -> "cataclysm";
             case SILVER, DRAGONBONE, PHANTASMAL, DRAGONSTEEL_FIRE, DRAGONSTEEL_ICE, DRAGONSTEEL_LIGHTNING -> "iceandfire";
             case ENDERITE_MOD -> "enderitemod";
+            case CAC_SILVER, NECROMIUM -> "caverns_and_chasms";
+            case ELECTRUM, OREGANIZED_SILVER -> "oreganized";
+            case SKYJADE, STRATUS -> "deep_aether";
+            case FERRICORE, BLAZEGOLD, CELESTIGEM, ECLIPSE_ALLOY -> "justdirethings";
+            case CLOGGRUM, FORGOTTEN, FROSTSTEEL, UTHERIUM -> "undergarden";
+            case PEARLESCENT -> "unusualend";
+            case DEEPSILVER, THERMAL_SPRINGSTONE, GLACITE, STARLIT_DIAMOND, AMARAMBER, MALARITE, UNREALIUM -> "eternal_starlight";
+            case SOULSTAINED_STEEL -> "malum";
+            case IESNIUM -> "occultism";
+            case MALIGNANT_PEWTER -> "malum";
+            case STARMETAL -> "astralsorcery";
             default -> null;
         };
     }
@@ -117,7 +165,12 @@ public enum DiscTier {
     public int witherSeconds() { return this == WITHERITE ? 4 : 0; }
 
     /** Ice dragonsteel chills what it cuts. */
-    public int slowSeconds() { return this == DRAGONSTEEL_ICE ? 3 : 0; }
+    public int slowSeconds() {
+        return switch (this) {
+            case DRAGONSTEEL_ICE, NECROMIUM, FROSTSTEEL, GLACITE -> 3;
+            default -> 0;
+        };
+    }
 
     /** Knightmetal bites armored targets harder (Twilight Forest sword trait). */
     public float bonusVsArmored() { return this == KNIGHTMETAL ? 2.0f : 0.0f; }
@@ -126,7 +179,13 @@ public enum DiscTier {
     public boolean scalesWithDamage() { return this == ZANITE; }
 
     /** Gravitite launches its target skyward (The Aether sword trait). */
-    public double launchPower() { return this == GRAVITITE ? 0.9 : 0.0; }
+    public double launchPower() {
+        return switch (this) {
+            case GRAVITITE -> 0.9;
+            case STRATUS -> 1.3;
+            default -> 0.0;
+        };
+    }
 
     /** Silver bites the undead (Ice and Fire sword trait): damage multiplier bonus. */
     public float bonusVsUndead() { return this == SILVER ? 0.5f : 0.0f; }
@@ -141,6 +200,40 @@ public enum DiscTier {
 
     /** Flat bonus against sculk creatures, after Deeper and Darker's Sculk Smite. */
     public float bonusVsSculk() { return this == REINFORCED_ECHO ? 5.0f : 0.0f; }
+
+
+    /** Part of the damage is dealt as magic damage, which ignores armour
+     *  (Caverns and Chasms silver; Malum's soulstained steel). */
+    public float magicSplit() {
+        return switch (this) {
+            case CAC_SILVER, SOULSTAINED_STEEL -> 0.5f;
+            default -> 0.0f;
+        };
+    }
+
+    /** Skyjade is the inverse of zanite: strongest pristine, weaker as it wears (Deep Aether). */
+    public boolean scalesWithPristine() { return this == SKYJADE; }
+
+    /** Electrum deals kinetic damage: the faster it flies, the harder it hits (Oreganized). */
+    public boolean kineticDamage() { return this == ELECTRUM; }
+
+    /** Phoenix weapons hit burning foes harder (Aether Lost Content). */
+    public float bonusVsBurning() { return 0.0f; } // the Phoenix disc is 1.20.1-only
+
+    /** Forgotten metal bites the Undergarden's own creatures (The Undergarden). */
+    public float bonusVsUndergarden() { return this == FORGOTTEN ? 0.5f : 0.0f; }
+
+    /** Utherium bites the Rotspawn (The Undergarden). */
+    public float bonusVsRotspawn() { return this == UTHERIUM ? 0.5f : 0.0f; }
+
+    /** Magnalyth and Mortyx bite the Behemoths. */
+    public float bonusVsBehemoth() { return 0.0f; } // Behemoths is 1.20.1-only
+
+    /** Extra base flight range, after the Pearlescent tier's long reach (Unusual End). */
+    public double rangeBonus() { return this == PEARLESCENT ? 8.0 : 0.0; }
+
+    /** Blazegold repairs itself in lava while carried (Just Dire Things). */
+    public boolean lavaRepairs() { return this == BLAZEGOLD; }
 
     /** Steeleaf kills pay bonus experience, after its sword's built-in Looting II. */
     public int xpOnKill() { return this == STEELEAF ? 3 : 0; }

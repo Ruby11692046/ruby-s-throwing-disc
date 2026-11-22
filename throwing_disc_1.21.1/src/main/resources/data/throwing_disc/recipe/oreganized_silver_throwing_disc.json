@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "oreganized"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "oreganized:silver_ingot"
+    }
+  },
+  "result": {
+    "id": "throwing_disc:oreganized_silver_throwing_disc",
+    "count": 1
+  }
+}

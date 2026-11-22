@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "unusualend"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "unusualend:pearlescent_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "throwing_disc:diamond_throwing_disc"
+  },
+  "addition": {
+    "item": "unusualend:pearlescent_ingot"
+  },
+  "result": {
+    "id": "throwing_disc:pearlescent_throwing_disc",
+    "count": 1
+  }
+}

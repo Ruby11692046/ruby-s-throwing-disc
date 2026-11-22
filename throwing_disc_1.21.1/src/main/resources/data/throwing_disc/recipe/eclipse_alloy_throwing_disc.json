@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "justdirethings"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "justdirethings:eclipsealloy_ingot"
+    }
+  },
+  "result": {
+    "id": "throwing_disc:eclipse_alloy_throwing_disc",
+    "count": 1
+  }
+}

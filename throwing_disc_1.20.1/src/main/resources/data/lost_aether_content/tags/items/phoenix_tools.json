@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "throwing_disc:phoenix_throwing_disc",
+      "required": false
+    }
+  ]
+}

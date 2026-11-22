@@ -2,6 +2,8 @@
 
 ## Changelog — changes since the first release (2026-11-17)
 
+- **Many more integrations**: discs for Caverns and Chasms, Oreganized, Deep Aether, Just Dire Things, The Undergarden, Unusual End, Eternal Starlight, Malum and Occultism on both versions — plus Behemoths, Aether Redux, Aether Lost Content, Mana and Artifice, Blaze Gear and Blue Skies on 1.20.1, and Astral Sorcery on 1.21.1 — **67 discs (1.20.1) / 62 discs (1.21.1)** in total, each keeping its home material's traits. The Phoenix disc cannot be crafted: like Lost Content's own Phoenix tools, it is found in Platinum Dungeon treasure chests. On 1.20.1, the Reinforced Echo disc was removed (Deeper and Darker's 1.20.1 release has no Reinforced Echo Shard); it remains on 1.21.1
+
 - **Enderite Mod support**: an Enderite disc (damage 11, durability 2400, fire-resistant) — made by smithing-upgrading the Netherite disc with an Enderite ingot and the Enderite Upgrade Template, exactly like the mod's own gear
 - **Flight speed is configurable**: a config option (discSpeed, default 1.0) now sets the discs' flight speed — it was fixed at 1.6 in the first release
 - **Spin fixed on centre**: the flying disc now rotates exactly around its own centre (the item model's ground display offset had been shifting the spin axis)
@@ -17,6 +19,8 @@
 ---
 
 ## チェンジログ — 最初のリリース（2026-11-17）からの変更点
+
+- **連携Modを大量追加**：両版に Caverns and Chasms、Oreganized、Deep Aether、Just Dire Things、The Undergarden、Unusual End、Eternal Starlight、Malum、Occultism。1.20.1 のみに Behemoths、Aether Redux、Aether Lost Content、Mana and Artifice、Blaze Gear、Blue Skies。1.21.1 のみに Astral Sorcery。各ディスクに本家素材の特性も再現。合計 **1.20.1版 67種／1.21.1版 62種**。フェニックスのディスクはクラフト不可で、本家のフェニックスツールと同じくプラチナダンジョンのお宝チェストから入手する。1.20.1 では強化残響のディスクを削除した（Deeper and Darker の 1.20.1 版に強化残響の破片が存在しないため。1.21.1 版には残っている）
 
 - **Enderite Mod に対応**：エンダライトディスク（ダメージ11、耐久2400、耐火）を追加。本家の装備と同じく、ネザライトのディスクをエンダライトインゴットとエンダライト強化テンプレートで鍛冶強化して作る
 - **飛翔速度をコンフィグで変更可能にした**：設定項目 discSpeed（デフォルト 1.0）でディスクの飛ぶ速度を変えられるようにした。最初のリリースでは 1.6 固定だった

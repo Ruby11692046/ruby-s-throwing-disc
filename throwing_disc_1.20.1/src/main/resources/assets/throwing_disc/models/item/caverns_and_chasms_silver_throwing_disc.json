@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "throwing_disc:item/caverns_and_chasms_silver_throwing_disc"
+  }
+}

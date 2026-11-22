@@ -1,0 +1,22 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "caverns_and_chasms"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "throwing_disc:diamond_throwing_disc"
+  },
+  "addition": {
+    "item": "caverns_and_chasms:necromium_ingot"
+  },
+  "result": {
+    "item": "throwing_disc:necromium_throwing_disc",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "undergarden:utherium_crystal"
+    }
+  },
+  "result": {
+    "id": "throwing_disc:utherium_throwing_disc",
+    "count": 1
+  }
+}

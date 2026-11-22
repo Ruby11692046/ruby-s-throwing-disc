@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "eternal_starlight"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "eternal_starlight:glacite_shard"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:glacite_throwing_disc",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "deep_aether"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "X X",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "deep_aether:skyjade"
+    }
+  },
+  "result": {
+    "item": "throwing_disc:skyjade_throwing_disc",
+    "count": 1
+  }
+}

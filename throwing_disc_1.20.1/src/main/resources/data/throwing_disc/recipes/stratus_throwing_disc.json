@@ -1,0 +1,22 @@
+{
+  "forge:conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "deep_aether"
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "deep_aether:stratus_smithing_template"
+  },
+  "base": {
+    "item": "throwing_disc:gravitite_throwing_disc"
+  },
+  "addition": {
+    "item": "deep_aether:stratus_ingot"
+  },
+  "result": {
+    "item": "throwing_disc:stratus_throwing_disc",
+    "count": 1
+  }
+}

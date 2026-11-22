@@ -128,6 +128,110 @@
     {
       "id": "throwing_disc:enderite_mod_throwing_disc",
       "required": false
+    },
+    {
+      "id": "throwing_disc:caverns_and_chasms_silver_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:necromium_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:electrum_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:oreganized_silver_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:skyjade_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:stratus_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:ferricore_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:blazegold_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:celestigem_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:eclipse_alloy_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:cloggrum_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:forgotten_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:froststeel_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:utherium_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:pearlescent_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:deepsilver_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:thermal_springstone_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:glacite_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:starlit_diamond_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:amaramber_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:malarite_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:unrealium_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:soulstained_steel_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:iesnium_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:malignant_pewter_throwing_disc",
+      "required": false
+    },
+    {
+      "id": "throwing_disc:starmetal_throwing_disc",
+      "required": false
     }
   ]
 }
