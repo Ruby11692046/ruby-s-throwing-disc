@@ -124,6 +124,10 @@
     {
       "id": "throwing_disc:dragonsteel_lightning_throwing_disc",
       "required": false
+    },
+    {
+      "id": "throwing_disc:enderite_mod_throwing_disc",
+      "required": false
     }
   ]
 }

@@ -41,5 +41,6 @@
   "enchantment.throwing_disc.lingering.desc": "Дольше остаётся в воздухе: +2 с и +13 блоков дальности за уровень.",
   "enchantment.throwing_disc.splitting": "Расщепление",
   "enchantment.throwing_disc.splitting.desc": "При броске веером разделяется на дополнительные диски, исчезающие при возвращении.",
-  "item.throwing_disc.andesite_alloy_throwing_disc": "Метательный диск из андезитового сплава"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Метательный диск из андезитового сплава",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Метательный диск из эндерита"
 }

@@ -41,5 +41,6 @@
   "enchantment.throwing_disc.lingering.desc": "Bleibt länger in der Luft: +2 Sekunden und +13 Blöcke Reichweite pro Stufe.",
   "enchantment.throwing_disc.splitting": "Spaltung",
   "enchantment.throwing_disc.splitting.desc": "Teilt sich beim Werfen fächerförmig in zusätzliche Scheiben, die bei der Rückkehr verschwinden.",
-  "item.throwing_disc.andesite_alloy_throwing_disc": "Andesit-Legierung-Wurfscheibe"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Andesit-Legierung-Wurfscheibe",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Enderit-Wurfscheibe"
 }

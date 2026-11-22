@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "Dłużej utrzymuje się w powietrzu: +2 s i +13 bloków zasięgu na poziom.",
   "enchantment.throwing_disc.splitting": "Rozszczepienie",
   "enchantment.throwing_disc.splitting.desc": "Po rzuceniu rozdziela się wachlarzem na dodatkowe dyski, które znikają po powrocie.",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "Dysk do rzucania ze stopu cynku"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Dysk do rzucania ze stopu andezytu",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Dysk do rzucania z enderytu"
 }

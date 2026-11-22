@@ -124,6 +124,10 @@
     {
       "id": "throwing_disc:zinc_throwing_disc",
       "required": false
+    },
+    {
+      "id": "throwing_disc:enderite_mod_throwing_disc",
+      "required": false
     }
   ]
 }

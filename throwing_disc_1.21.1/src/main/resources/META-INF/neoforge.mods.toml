@@ -1,9 +1,9 @@
 modLoader="javafml"
 loaderVersion="[2,)"
-license="GPL-3.0"
+license="MIT"
 [[mods]]
 modId="throwing_disc"
-version="0.1.23"
+version="0.1.28"
 logoFile="logo.png"
 displayName="Ruby's Throwing Disc"
 authors="Ruby"

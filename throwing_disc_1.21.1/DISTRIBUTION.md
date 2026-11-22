@@ -12,9 +12,10 @@ CurseForge / Modrinth の説明文としてそのまま使える文面です。
 
 Throw the disc and it flies straight with no gravity, **pierces** every enemy lined up in its path, **ricochets** off solid blocks — each bounce sends it farther and faster — and then **returns to the hand that threw it**, hitting enemies again on the way back. It can be thrown from either hand, needs no charging, no cooldown and no ammo, and after 3 seconds it always comes back. Decorated pots shatter and chorus flowers drop when hit, just like with arrows. Flight is simulated on the client too, so the disc glides smoothly, and a disc that wedges itself into a wall slips out to the nearest open space — air or liquid — and comes home.
 
-**32 discs (1.20.1) / 35 discs (1.21.1):**
+**33 discs (1.20.1) / 36 discs (1.21.1):**
 
 - Vanilla: Copper, Iron, Golden, Diamond, Netherite
+- Enderite Mod: Enderite (smithing upgrade of the Netherite disc, with the Enderite Upgrade Template — just like the mod's own gear)
 - Twilight Forest: Ironwood, Steeleaf, Knightmetal, Fiery
 - The Aether: Ambrosium, Zanite, Gravitite
 - Create: Andesite Alloy, Zinc, Brass
@@ -47,7 +48,7 @@ Every integration is a **soft dependency**: a disc is only registered while its 
 - **Lingering I–III** — stays in the air longer before returning: +2 seconds and +13 blocks of range per level
 - **Splitting I–IV** — one extra disc per level, thrown in a fan; the copies vanish when they return
 
-Every disc's colours are sampled from its source material's own texture, matched shade by shade, so each disc reads as the metal, gem or alloy it is made from.
+Every disc's colours are sampled from its source material's own texture, matched shade by shade, so each disc reads as the metal, gem or alloy it is made from. The flight speed can be adjusted in the config (discSpeed, default 1.0).
 
 **Credits:** Mod development and code created with the assistance of Muse AI. All textures created by Ruby.
 **License:** MIT
@@ -62,9 +63,10 @@ Every disc's colours are sampled from its source material's own texture, matched
 
 投げたディスクは重力を受けずに直進し、並んだ敵を**貫通**、固いブロックに当たると**跳ね返って**（跳ねるたびに射程と速度が伸びます）、最後は**投げた手に戻ってきます**（帰り道でも敵に当たります）。どちらの手からでも投げられ、溜め・クールダウン・弾は不要で、3秒経つと必ず戻ります。飾り壺は砕け、コーラスフラワーはアイテム化して落ちるなど、飛び道具としての反応もバニラ準拠です。飛翔はクライアント側でも再現されるので滑らかに飛び、壁に埋まってしまったディスクは近くの空白や液体へ抜け出して戻ってきます。
 
-**ディスクは 1.20.1版で32種／1.21.1版で35種：**
+**ディスクは 1.20.1版で33種／1.21.1版で36種：**
 
 - バニラ：銅、鉄、金、ダイヤモンド、ネザライト
+- Enderite Mod：エンダライト（本家の装備と同じく、ネザライトのディスクをエンダライト強化テンプレートで鍛冶強化）
 - Twilight Forest：アイアンウッド、スティールリーフ、ナイトメタル、ファイアリー
 - The Aether：アンブロシウム、ザナイト、グラビタイト
 - Create：安山岩合金、亜鉛、真鍮
@@ -97,29 +99,31 @@ Every disc's colours are sampled from its source material's own texture, matched
 - **滞空 I〜III**：戻ってくるまでの滞空時間が延びる。レベルごとに+2秒・射程+13ブロック
 - **分裂 I〜IV**：レベルごとにディスクが1枚増えて扇状に飛ぶ。増えた分は戻ると消える
 
-各ディスクの色は、元素材そのもののテクスチャから階調ごとに写し取ってあるので、金属・宝石・合金それぞれの色味そのままに見えます。
+各ディスクの色は、元素材そのもののテクスチャから階調ごとに写し取ってあるので、金属・宝石・合金それぞれの色味そのままに見えます。飛ぶ速度はコンフィグ（discSpeed、デフォルト1.0）で調整できます。
 
 **クレジット：** 開発・コードは Muse AI の支援による。テクスチャはすべて Ruby 制作。
 **ライセンス：** MIT
 
 ---
 
-## Changelog — update notes since the first release (1.20.1 v0.1.18 / 1.21.1 v0.1.21)
+## Changelog — changes since the first release (2026-11-17)
 
-- **Three new enchantments**: Delicate (bounce off creatures instead of piercing), Lingering I–III (+2 s of flight and +13 blocks of range per level), Splitting I–IV (extra discs in a fan; copies vanish on return)
-- **Conditional registration**: compat discs are now only registered while their home mod is installed — remove the mod and its discs are gone from the creative tab, JEI and existing worlds alike
-- **Texture colours re-matched**: every palette was regenerated from the source material's real texture, matched by shade distribution (Zanite, Brass and Refined Glowstone changed the most). Gravitite in particular was recoloured from the enchanted gravitite block itself — it had been sampled from the ore by mistake
-- **Smoother flight**: the client now simulates the disc's flight like vanilla projectiles, so motion and ricochet tilts render continuously instead of stepping between server updates
+- **Three enchantments of its own**: Delicate (the disc bounces off creatures instead of piercing them), Lingering I–III (+40 ticks of flight time and +13 blocks of range per level), Splitting I–IV (one phantom copy per level in a ±4° fan; copies deal damage but never wear, drop or duplicate the item)
+- **Conditional registration**: compat discs are only registered while their home mod is installed — without the mod they do not appear in the creative tab or JEI, and removing a mod removes its discs from existing worlds
+- **Texture colours re-matched**: every disc's palette was regenerated from its source material's real texture, matched shade by shade — Gravitite now wears the magenta of enchanted gravitite itself
+- **Smoother flight**: the client simulates the disc's flight like vanilla projectiles, so motion and ricochet tilts render continuously instead of stepping between server updates
 - **Stuck-in-wall rescue**: a disc that wedges into geometry slips out to the nearest open space (air or liquid) within 3 blocks and returns
-- **Mod icon added** (the disc-cluster illustration, transparent background)
-- Japanese name of the Andesite Alloy disc aligned with Create's own wording （安山岩合金）
+- **Mod icon added**: the disc-cluster illustration now shows in the mod list
+- **Japanese wording aligned**: the Andesite Alloy disc's Japanese name now matches Create's own （安山岩合金）
 
-## 更新履歴 — 初回公開からの変更点（1.20.1 v0.1.18／1.21.1 v0.1.21）
+---
 
-- **専用エンチャント3種を追加**：繊細（貫通せずクリーチャーに反射）、滞空 I〜III（レベルごとに滞空+2秒・射程+13ブロック）、分裂 I〜IV（扇状に増殖、コピーは帰還時に消滅）
-- **条件付き登録**：連携ディスクは相手の Mod が入っている時だけ登録されるようにした。Mod を抜くとクリエイティブタブや JEI から消え、既存ワールドからも無くなる
-- **テクスチャの色彩を全面見直し**：全素材の原画から階調分布を写し取る方式で再生成（ザナイト・真鍮・精製グロウストーンが特に変化）。グラビタイトは鉱石ではなくエンチャントされたグラビタイト本体の色で作り直した
-- **飛翔の描写を連続化**：クライアント側でも飛行を再現し、サーバー更新ごとのカクつきと反射時の傾きの遅れを解消
+## チェンジログ — 最初のリリース（2026-11-17）からの変更点
+
+- **専用エンチャント3種を追加**：繊細（貫通せずクリーチャーに反射）、滞空 I〜III（レベルごとに帰還まで+40 tick・射程+13ブロック）、分裂 I〜IV（レベルごとにファントムコピーが1枚増えて±4°の扇状に飛ぶ。コピーはダメージを与えるが、アイテムを削らず・落とさず・増殖もしない）
+- **条件付き登録**：連携ディスクは相手の Mod が入っている時だけ登録されるようにした。Mod が無い環境ではクリエイティブタブや JEI に出ず、Mod を抜くと既存ワールドからもそのディスクは消える
+- **テクスチャの色彩を全面見直し**：全ディスクのパレットを元素材の原画から階調ごとに写し取る方式で再生成した。グラビタイトはエンチャントされたグラビタイト本体のマゼンタ色になった
+- **飛翔の描写を連続化**：クライアント側でもバニラの飛び道具と同様に飛行を再現し、サーバー更新ごとのカクつきと反射時の傾きの遅れを解消
 - **壁埋まり対策**：埋まって動けなくなったディスクが、半径3以内の一番近い空白（液体も可）へ抜け出して帰還するようにした
-- **Modアイコンを追加**（ディスク集合イラスト、背景透過版）
-- 安山岩合金ディスクの日本語名を Create 本体の表記に統一
+- **Modアイコンを追加**：ディスク集合イラストが Mod 一覧に表示されるようにした
+- **日本語表記の統一**：安山岩合金ディスクの日本語名を Create 本体の表記に合わせた

@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "在空中停留更久：每級 +2 秒、+13 格射程。",
   "enchantment.throwing_disc.splitting": "分裂",
   "enchantment.throwing_disc.splitting.desc": "投擲時扇形分裂出額外圓盤，返回時消失。",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "鋅合金投擲圓盤"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "安山合金投擲圓盤",
+  "item.throwing_disc.enderite_mod_throwing_disc": "終界合金投擲圓盤"
 }

@@ -41,5 +41,6 @@
   "enchantment.throwing_disc.lingering.desc": "The disc stays in the air longer before returning: +2 seconds and +13 blocks of range per level.",
   "enchantment.throwing_disc.splitting": "Splitting",
   "enchantment.throwing_disc.splitting.desc": "The thrown disc splits into extra discs that fly in a fan. The extra discs vanish when they return.",
-  "item.throwing_disc.andesite_alloy_throwing_disc": "Andesite Alloy Throwing Disc"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Andesite Alloy Throwing Disc",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Enderite Throwing Disc"
 }

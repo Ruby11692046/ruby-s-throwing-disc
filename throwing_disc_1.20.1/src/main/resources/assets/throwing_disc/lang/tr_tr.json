@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "Havada daha uzun kalır: seviye başına +2 saniye ve +13 blok menzil.",
   "enchantment.throwing_disc.splitting": "Bölünme",
   "enchantment.throwing_disc.splitting.desc": "Fırlatıldığında yelpaze şeklinde ek disklere ayrılır; ek diskler dönüşte kaybolur.",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "Çinko Alaşımı Fırlatma Diski"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Andezit Alaşımı Fırlatma Diski",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Enderite Fırlatma Diski"
 }

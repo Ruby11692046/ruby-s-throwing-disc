@@ -72,7 +72,7 @@ public class DiscItem extends Item {
             disc.setDiscStack(stack.copy());
             disc.setFromHand(hand);
             disc.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0f,
-                    DiscProjectileEntity.BASE_SPEED * tier.speedFactor(), 0.0f);
+                    DiscProjectileEntity.baseSpeed() * tier.speedFactor(), 0.0f);
             level.addFreshEntity(disc);
             // Splitting: one extra disc per level, fanned out beside the
             // real one. The copies are phantoms — they vanish on return and
@@ -87,7 +87,7 @@ public class DiscItem extends Item {
                 copy.setFromHand(hand);
                 copy.setSplitCopy(true);
                 copy.shootFromRotation(player, player.getXRot(), player.getYRot() + yawOffset, 0.0f,
-                        DiscProjectileEntity.BASE_SPEED * tier.speedFactor(), 0.0f);
+                        DiscProjectileEntity.baseSpeed() * tier.speedFactor(), 0.0f);
                 level.addFreshEntity(copy);
             }
             level.playSound(null, player.blockPosition(), SoundEvents.TRIDENT_THROW.value(),

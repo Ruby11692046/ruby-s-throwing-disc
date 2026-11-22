@@ -41,5 +41,6 @@
   "enchantment.throwing_disc.lingering.desc": "Permanece mais tempo no ar: +2 s e +13 blocos de alcance por nível.",
   "enchantment.throwing_disc.splitting": "Divisão",
   "enchantment.throwing_disc.splitting.desc": "Divide-se em leque em discos adicionais que desaparecem ao retornar.",
-  "item.throwing_disc.andesite_alloy_throwing_disc": "Disco de arremesso de liga de andesito"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Disco de arremesso de liga de andesito",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Disco de arremesso de enderita"
 }

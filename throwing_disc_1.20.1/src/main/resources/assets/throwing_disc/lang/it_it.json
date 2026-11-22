@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "Resta in aria più a lungo: +2 s e +13 blocchi di gittata per livello.",
   "enchantment.throwing_disc.splitting": "Scissione",
   "enchantment.throwing_disc.splitting.desc": "Si divide a ventaglio in dischi aggiuntivi che svaniscono al ritorno.",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "Disco da lancio in lega di zinco"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Disco da lancio in lega di andesite",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Disco da lancio in enderite"
 }

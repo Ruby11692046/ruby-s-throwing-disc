@@ -2,6 +2,7 @@ package com.ruby.throwingdisc.entity;
 
 import com.ruby.throwingdisc.enchantment.DiscEnchants;
 import com.ruby.throwingdisc.item.DiscItem;
+import com.ruby.throwingdisc.config.DiscConfig;
 import com.ruby.throwingdisc.item.DiscTier;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -54,9 +55,16 @@ public class DiscProjectileEntity extends Projectile {
     private static final EntityDataAccessor<Boolean> DATA_RETURNING =
             SynchedEntityData.defineId(DiscProjectileEntity.class, EntityDataSerializers.BOOLEAN);
 
-    public static final float BASE_SPEED = 1.6f;
     private static final double BASE_RANGE = 26.0;
-    private static final double MAX_SPEED = BASE_SPEED * 2.0;
+
+    /** Disc flight speed, from the config (discSpeed, default 1.0). */
+    public static float baseSpeed() {
+        return DiscConfig.speed();
+    }
+
+    private static double maxSpeed() {
+        return baseSpeed() * 2.0;
+    }
     private static final double CATCH_DISTANCE = 1.3;
     private static final int MAX_FLIGHT_TICKS = 60; // forced return after 3 seconds
 
@@ -196,7 +204,7 @@ public class DiscProjectileEntity extends Projectile {
                 case Y -> new Vec3(mov.x, -mov.y, mov.z);
                 case Z -> new Vec3(mov.x, mov.y, -mov.z);
             };
-            double newLength = Math.min(reflected.length() * 1.15, MAX_SPEED);
+            double newLength = Math.min(reflected.length() * 1.15, maxSpeed());
             reflected = reflected.normalize().scale(newLength);
             setDeltaMovement(reflected);
             Vec3 at = blockHit.getLocation().add(reflected.normalize().scale(0.06));
@@ -267,7 +275,7 @@ public class DiscProjectileEntity extends Projectile {
             return;
         }
         Vec3 mov = toTarget.normalize().scale(
-                BASE_SPEED * getTier().speedFactor() * (this.forcedReturn ? 1.7 : 1.1));
+                baseSpeed() * getTier().speedFactor() * (this.forcedReturn ? 1.7 : 1.1));
         setDeltaMovement(mov);
 
         // The disc still cuts on the way home: outbound and return are
@@ -409,7 +417,7 @@ public class DiscProjectileEntity extends Projectile {
             case Y -> new Vec3(mov.x, -mov.y, mov.z);
             case Z -> new Vec3(mov.x, mov.y, -mov.z);
         };
-        double newLength = Math.min(reflected.length() * 1.15, MAX_SPEED);
+        double newLength = Math.min(reflected.length() * 1.15, maxSpeed());
         reflected = reflected.normalize().scale(newLength);
         setDeltaMovement(reflected);
         Vec3 at = blockHit.getLocation().add(reflected.normalize().scale(0.06));
@@ -441,7 +449,7 @@ public class DiscProjectileEntity extends Projectile {
         if (reflected.lengthSqr() < 1.0e-4) {
             reflected = mov.scale(-1.0);
         }
-        double newLength = Math.min(reflected.length() * 1.15, MAX_SPEED);
+        double newLength = Math.min(reflected.length() * 1.15, maxSpeed());
         reflected = reflected.normalize().scale(newLength);
         setDeltaMovement(reflected);
         Vec3 at = position().add(reflected.normalize().scale(0.1));

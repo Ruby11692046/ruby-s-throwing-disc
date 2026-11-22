@@ -15,6 +15,8 @@ public enum DiscTier {
     GOLDEN            ("golden_throwing_disc",             6.0f,  128, 25, 1.15f, 1.0, 0,  10.0, false),
     DIAMOND           ("diamond_throwing_disc",            9.0f, 1200, 10, 1.00f, 1.0, 0,  10.0, false),
     NETHERITE         ("netherite_throwing_disc",         10.0f, 1800, 15, 1.00f, 1.0, 0,  10.0, true),
+    // Enderite Mod (its gear is upgraded from netherite, so is this disc)
+    ENDERITE_MOD      ("enderite_mod_throwing_disc",      11.0f, 2400, 15, 1.00f, 1.0, 0,  10.0, true),
     // Twilight Forest
     IRONWOOD          ("ironwood_throwing_disc",           7.0f,  300, 15, 1.00f, 1.6, 0,  10.0, false),
     STEELEAF          ("steeleaf_throwing_disc",           8.0f,  350, 12, 1.00f, 1.0, 0,  10.0, false),
@@ -93,6 +95,7 @@ public enum DiscTier {
             case REINFORCED_ECHO -> "deeperdarker";
             case BLACK_STEEL, ANCIENT_METAL, ENDERITE, IGNITIUM, CURSIUM, WITHERITE -> "cataclysm";
             case SILVER, DRAGONBONE, PHANTASMAL, DRAGONSTEEL_FIRE, DRAGONSTEEL_ICE, DRAGONSTEEL_LIGHTNING -> "iceandfire";
+            case ENDERITE_MOD -> "enderitemod";
             default -> null;
         };
     }

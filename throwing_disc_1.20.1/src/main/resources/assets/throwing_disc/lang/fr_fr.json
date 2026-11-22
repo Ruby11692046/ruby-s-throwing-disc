@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "Reste en l'air plus longtemps : +2 s et +13 blocs de portée par niveau.",
   "enchantment.throwing_disc.splitting": "Division",
   "enchantment.throwing_disc.splitting.desc": "Se divise en éventail en disques supplémentaires qui disparaissent au retour.",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "Disque à lancer en alliage de zinc"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Disque à lancer en alliage d'andésite",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Disque à lancer en enderite"
 }

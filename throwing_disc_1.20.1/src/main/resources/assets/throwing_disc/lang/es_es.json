@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "Permanece más tiempo en el aire: +2 s y +13 bloques de alcance por nivel.",
   "enchantment.throwing_disc.splitting": "División",
   "enchantment.throwing_disc.splitting.desc": "Se divide en abanico en discos adicionales que desaparecen al regresar.",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "Disco arrojadizo de aleación de zinc"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Disco arrojadizo de aleación de andesita",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Disco arrojadizo de enderita"
 }

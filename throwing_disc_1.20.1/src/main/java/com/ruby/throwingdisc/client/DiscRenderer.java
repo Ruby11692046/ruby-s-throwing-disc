@@ -57,9 +57,14 @@ public class DiscRenderer extends EntityRenderer<DiscProjectileEntity> {
         // Spin the texture around the disc's own normal.
         float spin = (entity.tickCount + partialTicks) * 30.0f;
         poseStack.mulPose(Axis.ZP.rotationDegrees(spin));
-        poseStack.scale(1.4f, 1.4f, 1.4f);
+        // ItemDisplayContext.NONE applies no display transform, so the model
+        // stays centred exactly on the origin and the spin is right on the
+        // disc's centre. (GROUND would lift the model by 0.125 inside the
+        // spin, making the centre orbit; its 0.5 scale is folded into the
+        // 0.7 below to keep the same rendered size.)
+        poseStack.scale(0.7f, 0.7f, 0.7f);
 
-        this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.GROUND,
+        this.itemRenderer.renderStatic(entity.getItem(), ItemDisplayContext.NONE,
                 packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer,
                 entity.level(), entity.getId());
         poseStack.popPose();

@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "Довше залишається в повітрі: +2 с і +13 блоків дальності за рівень.",
   "enchantment.throwing_disc.splitting": "Розщеплення",
   "enchantment.throwing_disc.splitting.desc": "Під час кидка віялом розділяється на додаткові диски, що зникають під час повернення.",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "Метальний диск із цинкового сплаву"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "Метальний диск із андезитового сплаву",
+  "item.throwing_disc.enderite_mod_throwing_disc": "Метальний диск із ендериту"
 }

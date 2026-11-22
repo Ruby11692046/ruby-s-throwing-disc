@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "공중에 더 오래 머뭅니다: 레벨당 +2초, 사거리 +13블록.",
   "enchantment.throwing_disc.splitting": "분열",
   "enchantment.throwing_disc.splitting.desc": "던지면 부채 모양으로 추가 원반으로 분열하며, 돌아올 때 사라집니다.",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "아연 합금 투척 원반"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "안산암 합금 투척 원반",
+  "item.throwing_disc.enderite_mod_throwing_disc": "엔더라이트 투척 원반"
 }

@@ -38,5 +38,6 @@
   "enchantment.throwing_disc.lingering.desc": "戻ってくるまでの滞空時間が延びる。レベルごとに+2秒・射程+13ブロック。",
   "enchantment.throwing_disc.splitting": "分裂",
   "enchantment.throwing_disc.splitting.desc": "投げると扇状に分裂する。増えた分のディスクは戻ると消える。",
-  "item.throwing_disc.zinc_alloy_throwing_disc": "亜鉛合金の投擲ディスク"
+  "item.throwing_disc.andesite_alloy_throwing_disc": "安山岩合金の投擲ディスク",
+  "item.throwing_disc.enderite_mod_throwing_disc": "エンダライトの投擲ディスク"
 }
